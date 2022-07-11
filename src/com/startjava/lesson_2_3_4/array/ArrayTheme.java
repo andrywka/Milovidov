@@ -89,7 +89,7 @@ public class ArrayTheme {
         for (int i = 0; i < len5; i++) {
             do {
                 unic = true;
-                newnumber = (int)(Math.random() * 60 + 1) + 40;
+                newnumber = (int)(Math.random() * 40 + 1) + 60;
                 for (int k = 0; k < len5; k++) {
                     if (newnumber == numbers5[k]) {
                         unic = false;
