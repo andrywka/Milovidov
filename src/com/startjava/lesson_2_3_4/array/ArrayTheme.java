@@ -18,22 +18,22 @@ public class ArrayTheme {
         }
 
         System.out.println("\n\n2. Вывод произведения элементов массива");
-        int[] numbers2 = new int[10];
-        int len2 = numbers2.length;
+        intArr = new int[10];
+        int len2 = intArr.length;
         for (int i = 0; i < len2; i++) {
-            numbers2[i] = i;
+            intArr[i] = i;
         }
         int sum = 1;
         for (int i = 1; i < len2 - 1; i++) {
-            sum = sum * numbers2[i];
-            String answer = numbers2[i] < len2 - 2 ? (String.valueOf(numbers2[i]) + " * ") :
-                    (String.valueOf(numbers2[i]) + " = " + sum + "\n");
+            sum = sum * intArr[i];
+            String answer = intArr[i] < len2 - 2 ? (String.valueOf(intArr[i]) + " * ") :
+                    (String.valueOf(intArr[i]) + " = " + sum + "\n");
             System.out.print(answer);
 
         }
         for (int i = 0; i < len2; i++) {
-            String tail = numbers2[i] == numbers2[0] || numbers2[i] == numbers2[len2 - 1] ? "\nИндекс " + i +
-                    " соответствует числу " + String.valueOf(numbers2[i]) + " " : "";
+            String tail = intArr[i] == intArr[0] || intArr[i] == intArr[len2 - 1] ? "\nИндекс " + i +
+                    " соответствует числу " + String.valueOf(intArr[i]) + " " : "";
             System.out.print(tail);
         }
 
