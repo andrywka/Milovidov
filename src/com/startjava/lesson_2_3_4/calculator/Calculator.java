@@ -1,56 +1,41 @@
 package com.startjava.lesson_2_3_4.calculator;
 
+import static java.lang.Math.*;
+
 public class Calculator {
-    private int firstNum;
-    private int secondNum;
-    private char mathSign;
+    private String expression;
 
-    public int getFirstNum() {
-        return firstNum;
+    private String[] expressions;
+
+    public String getExpression() {
+        return expression;
     }
 
-    public void setFirstNum(int firstNum) {
-        this.firstNum = firstNum;
-    }
-
-    public int getSecondNum() {
-        return secondNum;
-    }
-
-    public void setSecondNum(int secondNum) {
-        this.secondNum = secondNum;
-    }
-
-    public char getMathSign() {
-        return mathSign;
-    }
-
-    public void setMathSign(char mathSign) {
-        this.mathSign = mathSign;
+    public void setExpression(String expression) {
+        this.expression = expression;
     }
 
     public void calculate() {
+        String[] expressions = expression.split(" ", 3);
         int result = 1;
-        switch (mathSign) {
+        switch (expressions[1].charAt(0)) {
             case '+':
-                result = firstNum + secondNum;
+                result = addExact(Integer.parseInt(expressions[0]),Integer.parseInt(expressions[2]));
                 break;
             case '-':
-                result = firstNum - secondNum;
+                result = subtractExact(Integer.parseInt(expressions[0]), Integer.parseInt(expressions[2]));
                 break;
             case '*':
-                result = firstNum * secondNum;
+                result = multiplyExact(Integer.parseInt(expressions[0]), Integer.parseInt(expressions[2]));
                 break;
             case '/':
-                result = firstNum / secondNum;
+                result = Integer.parseInt(expressions[0]) / Integer.parseInt(expressions[2]);
                 break;
             case '^':
-                for (int i = secondNum; i >= 1; i--) {
-                    result *= firstNum;
-                }
+                result = (int) Math.pow(Double.parseDouble(expressions[0]),Double.parseDouble(expressions[2]));
                 break;
             case '%':
-                result = firstNum % secondNum;
+                result = floorMod(Integer.parseInt(expressions[0]), Integer.parseInt(expressions[2]));
                 break;
         }
         System.out.println(result);
