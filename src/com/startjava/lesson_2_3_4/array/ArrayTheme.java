@@ -1,7 +1,9 @@
 package com.startjava.lesson_2_3_4.array;
 
-
 import java.util.Arrays;
+
+import static java.lang.Math.floor;
+import static java.lang.Math.rint;
 
 public class ArrayTheme {
     static int[] intArr = new int[1];
@@ -20,12 +22,9 @@ public class ArrayTheme {
     }
 
     public static void main(String[] args) {
-
         System.out.println("1. Реверс значений массива");
         int[] intArr = {1, 2, 3, 4, 5, 6, 7};
-        printArray(intArr);
         int len = intArr.length;
-        System.out.println("\n");
         int[] numbers1 = new int[len];
         for (int i = 0; i < len; i++) {
             numbers1[i] = intArr[len - 1 - i];
@@ -41,12 +40,11 @@ public class ArrayTheme {
         int prod = 1;
         for (int i = 2; i < len - 1; i++) {
             prod *= intArr[i];
-            String answer = intArr[i] < len - 2 ? " * " : " = " + prod + "\n";
-            System.out.print(intArr[i] + answer);
+            System.out.print(intArr[i] + (intArr[i] < len - 2 ? " * " : " = " + prod));
 
         }
-        System.out.println("\nИндекс 0 соответсвует числу " + intArr[0]);
-        System.out.println("Индекс 9 соответсвует числу " + intArr[9]);
+        System.out.println("\n\nИндекс 0 соответствует числу " + intArr[0]);
+        System.out.println("Индекс 9 соответствует числу " + intArr[9]);
 
         System.out.println("\n\n3. Удаление элементов массива");
         double[] doubleArr = new double[15];
@@ -58,15 +56,16 @@ public class ArrayTheme {
         for (double number : doubleArr) {
             System.out.println(number + " ");
         }
-//        double[] newnumbers3 = Arrays.copyOf(doubleArr, len);
-//        int len1 = newnumbers3.length;
-        double sample = doubleArr[7];
-        System.out.println("\nЭталонная ячейка с индексом 7: " + sample);
+        double sample = doubleArr[(int) rint(len/2)];
+        System.out.println("\nЭталонная ячейка с индексом " + rint(len/2) + ": "  + sample);
         int result = 0;
         System.out.println("\nИзмененный массив:");
         for (int i = 0; i < len; i++) {
-            result += doubleArr[i] >= sample ? 1 : 0;
-            doubleArr[i] = doubleArr[i] >= sample ? 0 : doubleArr[i];
+            if (doubleArr[i] >= sample) {
+                doubleArr[i] = 0.0;
+            }else{
+                result++;
+            }
             System.out.println(doubleArr[i]);
         }
         System.out.println("\nКоличество измененных ячеек: " + result);
@@ -87,30 +86,32 @@ public class ArrayTheme {
         intArr = new int[30];
         len = intArr.length;
         boolean unic;
-        int newnumber;
+        int newNumber;
         for (int i = 0; i < len; i++) {
             do {
                 unic = true;
-                newnumber = (int) (Math.random() * 40 + 1) + 60;
+                newNumber = (int) (Math.random() * 40 + 1) + 60;
                 for (int k = 0; k < len; k++) {
-                    if (newnumber == intArr[k]) {
+                    if (newNumber == intArr[k]) {
                         unic = false;
                         break;
                     }
                 }
             } while (!unic);
-            intArr[i] = newnumber;
+            intArr[i] = newNumber;
         }
         printArray(intArr);
 
         System.out.println("\n\n6. Сдвиг элементов массива");
         String[] stringArr = {"", "AA", "", "", "BBB", "C", "", "DDDD"};
         len = stringArr.length;
-        int cells = 0;
+        int newLen = 0;
         for (int i = 0; i < len; i++) {
-            cells += stringArr[i].isBlank() ? 1 : 0;
+            if(stringArr[i].isBlank()){
+                newLen++;
+            }
         }
-        String[] newStringArr = Arrays.copyOf(stringArr, cells);
+        String[] newStringArr = new String[newLen];
         int k=0;
         for (int i = 0; i < len; i++) {
             if (!stringArr[i].isBlank()){
@@ -122,13 +123,5 @@ public class ArrayTheme {
         printArrayS(stringArr);
         System.out.println("\nНовый массив:");
         printArrayS(newStringArr);
-
-//        заполните второй массив строками из первого, используя метод System.arraycopy. При этом пустые строки в него включать не нужно
-        //char[] newChars = Arrays.copyOf(chars,)
-//        его длина должна соответствовать количеству непустых строк из первого массива
-//        копируйте не по одной строке за раз, а сразу все подряд идущие непустые строки
-//        сортировку использовать нельзя
-//        отобразите оба массива
-
     }
 }
