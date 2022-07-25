@@ -100,6 +100,7 @@ public class ArrayTheme {
             } while (!unic);
             intArr[i] = newNumber;
         }
+        Arrays.sort(intArr);
         printArray(intArr);
 
         System.out.println("\n\n6. Сдвиг элементов массива");
