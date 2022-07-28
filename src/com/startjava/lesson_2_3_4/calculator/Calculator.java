@@ -5,7 +5,10 @@ import java.util.Scanner;
 import static java.lang.Math.*;
 
 public class Calculator {
-    int result;
+    protected int result;
+
+    protected String fullResult;
+
     protected String partsExpression;
 
     private String[] expressions;
@@ -36,5 +39,6 @@ public class Calculator {
                 result = floorMod(a, b);
                 break;
         }
+        fullResult = partsExpression + " = " + result;
     }
 }
