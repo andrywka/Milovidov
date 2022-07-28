@@ -7,11 +7,10 @@ public class CalculatorTest {
         String reply = "yes";
         do {
             Scanner scan = new Scanner(System.in);
-            Calculator resOne = new Calculator();
+            Calculator calc = new Calculator();
             System.out.println("Введите математическое выражение");
-            resOne.setExpression(scan.nextLine());
-            System.out.print(resOne.getExpression() + " = ");
-            resOne.calculate();
+            calc.calculate();
+            System.out.println(calc.partsExpression + " = " + calc.result);
             reply = "";
             while (!"yes".equals(reply) && !"no".equals(reply)) {
                 System.out.println("Хотите продолжить вычисления? [yes/no]");
