@@ -2,33 +2,17 @@ package com.startjava.lesson_2_3_4.array;
 
 import java.util.Arrays;
 
-import static java.lang.Math.floor;
-import static java.lang.Math.rint;
-
 public class ArrayTheme {
-    static int[] intArr = new int[1];
-    private static String string;
-
-    static void printArray(int[] intArr) {
-        for (int number : intArr) {
-            System.out.print(number + " ");
-        }
-    }
-
-    static void printArrayS(String[] string) {
-        for (String line : string) {
-            System.out.print(line + " ");
-        }
-    }
-
     public static void main(String[] args) {
         System.out.println("1. Реверс значений массива");
         int[] intArr = {1, 2, 3, 4, 5, 6, 7};
+        System.out.println("До модификации:");
+        printArray(intArr);
+        System.out.println("\nПосле модификации:");
         int len = intArr.length;
-        int[] numbers1 = new int[len];
         for (int i = 0; i < len; i++) {
-            numbers1[i] = intArr[len - 1 - i];
-            System.out.print(numbers1[i] + " ");
+            intArr[i] = intArr[len - 1 - i];
+            System.out.print(intArr[i] + " ");
         }
 
         System.out.println("\n\n2. Вывод произведения элементов массива");
@@ -46,7 +30,7 @@ public class ArrayTheme {
         System.out.println("\n\nИндекс 0 соответствует числу " + intArr[0]);
         System.out.println("Индекс 9 соответствует числу " + intArr[9]);
 
-        System.out.println("\n\n3. Удаление элементов массива");
+        System.out.println("\n3. Удаление элементов массива");
         double[] doubleArr = new double[15];
         len = doubleArr.length;
         for (int i = 0; i < len; i++) {
@@ -56,19 +40,19 @@ public class ArrayTheme {
         for (double number : doubleArr) {
             System.out.println(number + " ");
         }
-        double sample = doubleArr[(int) rint(len/2)];
-        System.out.println("\nЭталонная ячейка с индексом " + rint(len/2) + ": "  + sample);
-        int result = 0;
+        double sample = doubleArr[(len / 2)];
+        System.out.println("\nЭталонная ячейка с индексом " + (len / 2) + ": "  + sample);
+        int count = 0;
         System.out.println("\nИзмененный массив:");
         for (int i = 0; i < len; i++) {
             if (doubleArr[i] >= sample) {
                 doubleArr[i] = 0.0;
-            }else{
-                result++;
+            } else {
+                count++;
             }
             System.out.println(doubleArr[i]);
         }
-        System.out.println("\nКоличество измененных ячеек: " + result);
+        System.out.println("\nКоличество измененных ячеек: " + count);
 
         System.out.println("\n4. Вывод элементов массива лесенкой в обратном порядке");
         char[] chars = new char[26];
@@ -115,14 +99,25 @@ public class ArrayTheme {
         String[] newStringArr = new String[newLen];
         int k=0;
         for (int i = 0; i < len; i++) {
-            if (!stringArr[i].isBlank()){
+            if (!stringArr[i].isBlank()) {
                 newStringArr[k] = stringArr[i];
                 k++;
             }
         }
         System.out.println("Исходный массив:");
-        printArrayS(stringArr);
+        printArray(stringArr);
         System.out.println("\nНовый массив:");
-        printArrayS(newStringArr);
+        printArray(newStringArr);
+    }
+    private static void printArray(int[] intArr) {
+        for (int number : intArr) {
+            System.out.print(number + " ");
+        }
+    }
+
+    private static void printArray(String[] string) {
+        for (String line : string) {
+            System.out.print(line + " ");
+        }
     }
 }
