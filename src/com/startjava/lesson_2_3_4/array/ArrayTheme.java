@@ -109,6 +109,7 @@ public class ArrayTheme {
         System.out.println("\nНовый массив:");
         printArray(newStringArr);
     }
+
     private static void printArray(int[] intArr) {
         for (int number : intArr) {
             System.out.print(number + " ");
