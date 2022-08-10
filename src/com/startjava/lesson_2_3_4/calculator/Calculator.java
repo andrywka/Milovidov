@@ -5,7 +5,6 @@ import java.util.Scanner;
 import static java.lang.Math.*;
 
 public class Calculator {
-
     private String  partsExpression;
 
     public String getPartsExpression() {
