@@ -5,40 +5,36 @@ import java.util.Scanner;
 import static java.lang.Math.*;
 
 public class Calculator {
-    protected int result;
 
-    protected String fullResult;
+    private String  partsExpression;
 
-    protected String partsExpression;
+    public String getPartsExpression() {
+        return partsExpression;
+    }
 
-    private String[] expressions;
+    public void setPartsExpression(String partsExpression) {
+        this.partsExpression = partsExpression;
+    }
 
-    public void calculate() {
+    public int calculate() {
         Scanner scan = new Scanner(System.in);
-        partsExpression = scan.nextLine();
         String[] expressions = partsExpression.split(" ", 3);
         int a = Integer.parseInt(expressions[0]);
         int b = Integer.parseInt(expressions[2]);
         switch (expressions[1].charAt(0)) {
-            case '+':
-                result = addExact(a, b);
-                break;
+            case '+': 
+                return addExact(a, b);
             case '-':
-                result = subtractExact(a, b);
-                break;
+                return subtractExact(a, b);
             case '*':
-                result = multiplyExact(a, b);
-                break;
+                return multiplyExact(a, b);
             case '/':
-                result = a / b;
-                break;
+                return a / b;
             case '^':
-                result = (int) pow(Double.parseDouble(expressions[0]),Double.parseDouble(expressions[2]));
-                break;
+                return (int) pow(Double.parseDouble(expressions[0]),Double.parseDouble(expressions[2]));
             case '%':
-                result = floorMod(a, b);
-                break;
+                return floorMod(a, b);
         }
-        fullResult = partsExpression + " = " + result;
+        return 0;
     }
 }
