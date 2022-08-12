@@ -5,7 +5,6 @@ import java.util.Scanner;
 import static java.lang.Math.*;
 
 public class Calculator {
-
     public int calculate(String expression) {
         String[] partsExpression = expression.split(" ", 3);
         int a = Integer.parseInt(partsExpression[0]);
