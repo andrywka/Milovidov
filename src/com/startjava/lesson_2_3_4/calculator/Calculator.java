@@ -12,7 +12,10 @@ public class Calculator {
         try {
             int a = Integer.parseInt(partsExpression[0]);
             int b = Integer.parseInt(partsExpression[2]);
-            marker = true;
+            marker = (a * b) > 0;
+            if (!marker) {
+                System.out.println("¬ведено некорректное число, используйте дл€ вычислений целые положительные числа");
+            }
             switch (partsExpression[1].charAt(0)) {
                 case '+' -> {
                     return addExact(a, b);
@@ -35,7 +38,6 @@ public class Calculator {
             }
         } catch (NumberFormatException e) {
             marker = false;
-            System.out.println("¬ведено некорректное число, используйте дл€ вычислений целые положительные числа");
         }
         return 0;
     }
