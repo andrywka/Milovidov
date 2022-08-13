@@ -38,6 +38,7 @@ public class Calculator {
             }
         } catch (NumberFormatException e) {
             marker = false;
+            System.out.println("¬ведено некорректное число, используйте дл€ вычислений целые положительные числа");
         }
         return 0;
     }
