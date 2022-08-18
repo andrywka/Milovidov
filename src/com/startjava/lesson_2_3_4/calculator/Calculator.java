@@ -15,7 +15,7 @@ public class Calculator {
                 a = Integer.parseInt(partsExpression[0]);
                 b = Integer.parseInt(partsExpression[2]);
             } catch (IllegalArgumentException e) {
-                System.out.println("Введено некорректное число");
+                System.out.println("Введено некорректное число. Используйте целые положительные числа");
             }
         } else {
             throw new NumberFormatException("Введено некорректное выражение");
@@ -24,19 +24,14 @@ public class Calculator {
             return switch (partsExpression[1].charAt(0)) {
                 case '+':
                     yield addExact(a, b);
-
                 case '-':
                     yield subtractExact(a, b);
-
                 case '*':
                     yield multiplyExact(a, b);
-
                 case '/':
                     yield a / b;
-
                 case '^':
                     yield(int) pow(Double.parseDouble(partsExpression[0]), Double.parseDouble(partsExpression[2]));
-
                 case '%':
                     yield floorMod(a, b);
                 default:
