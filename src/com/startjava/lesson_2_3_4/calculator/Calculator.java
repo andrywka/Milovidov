@@ -5,41 +5,45 @@ import java.util.Scanner;
 import static java.lang.Math.*;
 
 public class Calculator {
-    public static boolean marker = true;
 
     public static int calculate(String expression) {
-        String[] partsExpression = expression.split(" ", 3);
-        try {
-            int a = Integer.parseInt(partsExpression[0]);
-            int b = Integer.parseInt(partsExpression[2]);
-            marker = (a * b) > 0;
-            if (!marker) {
-                System.out.println("¬‚Â‰ÂÌÓ ÌÂÍÓÂÍÚÌÓÂ ˜ËÒÎÓ, ËÒÔÓÎ¸ÁÛÈÚÂ ‰Îˇ ‚˚˜ËÒÎÂÌËÈ ˆÂÎ˚Â ÔÓÎÓÊËÚÂÎ¸Ì˚Â ˜ËÒÎ‡");
+        int a = 0;
+        int b = 0;
+        String[] partsExpression = expression.split(" ");
+        if (partsExpression.length == 3) {
+            try {
+                a = Integer.parseInt(partsExpression[0]);
+                b = Integer.parseInt(partsExpression[2]);
+            } catch (IllegalArgumentException e) {
+                System.out.println("–í–≤–µ–¥–µ–Ω–æ –Ω–µ–∫–æ—Ä—Ä–µ–∫—Ç–Ω–æ–µ —á–∏—Å–ª–æ");
             }
-            switch (partsExpression[1].charAt(0)) {
-                case '+' -> {
-                    return addExact(a, b);
-                }
-                case '-' -> {
-                    return subtractExact(a, b);
-                }
-                case '*' -> {
-                    return multiplyExact(a, b);
-                }
-                case '/' -> {
-                    return a / b;
-                }
-                case '^' -> {
-                    return (int) pow(Double.parseDouble(partsExpression[0]), Double.parseDouble(partsExpression[2]));
-                }
-                case '%' -> {
-                    return floorMod(a, b);
-                }
-            }
-        } catch (NumberFormatException e) {
-            marker = false;
-            System.out.println("¬‚Â‰ÂÌÓ ÌÂÍÓÂÍÚÌÓÂ ˜ËÒÎÓ, ËÒÔÓÎ¸ÁÛÈÚÂ ‰Îˇ ‚˚˜ËÒÎÂÌËÈ ˆÂÎ˚Â ÔÓÎÓÊËÚÂÎ¸Ì˚Â ˜ËÒÎ‡");
+        } else {
+            throw new NumberFormatException("–í–≤–µ–¥–µ–Ω–æ –Ω–µ–∫–æ—Ä—Ä–µ–∫—Ç–Ω–æ–µ –≤—ã—Ä–∞–∂–µ–Ω–∏–µ");
         }
-        return 0;
+            if (a > 0 && b > 0) {
+                return switch (partsExpression[1].charAt(0)) {
+                    case '+':
+                        yield addExact(a, b);
+
+                    case '-':
+                        yield subtractExact(a, b);
+
+                    case '*':
+                        yield multiplyExact(a, b);
+
+                    case '/':
+                        yield a / b;
+
+                    case '^':
+                        yield (int) pow(Double.parseDouble(partsExpression[0]), Double.parseDouble(partsExpression[2]));
+
+                    case '%':
+                        yield floorMod(a, b);
+                    default:
+                        throw new IllegalArgumentException("–í–≤–µ–¥–µ–Ω –Ω–µ–∫–æ—Ä—Ä–µ–∫—Ç–Ω—ã–π –∑–Ω–∞–∫");
+                };
+            } else {
+                throw new IllegalArgumentException("–ò—Å–ø–æ–ª—å–∑—É–π—Ç–µ –¥–ª—è –≤—ã—á–∏—Å–ª–µ–Ω–∏–π —Ü–µ–ª—ã–µ –ø–æ–ª–æ–∂–∏—Ç–µ–ª—å–Ω—ã–µ —á–∏—Å–ª–∞");
+            }
     }
 }

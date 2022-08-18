@@ -4,21 +4,22 @@ import java.util.Scanner;
 
 public class CalculatorTest {
     public static void main(String[] args) {
-        String reply = "yes";
+        String reply;
+        Scanner scan = new Scanner(System.in);
+        String expression;
         do {
-            Scanner scan = new Scanner(System.in);
-            String expression;
-            do {
-                System.out.println("Введите математическое выражение");
-                expression = scan.nextLine();
-                Calculator.calculate(expression);
-            } while (!Calculator.marker);
-            System.out.println(expression + " = " + Calculator.calculate(expression));
-            reply = "";
-            while (!"yes".equals(reply) && !"no".equals(reply)) {
-                System.out.println("Хотите продолжить вычисления? [yes/no]");
-                reply = scan.nextLine();
+            System.out.println("Р’РІРµРґРёС‚Рµ РјР°С‚РµРјР°С‚РёС‡РµСЃРєРѕРµ РІС‹СЂР°Р¶РµРЅРёРµ");
+            expression = scan.nextLine();
+            try {
+                System.out.println(expression + " = " + Calculator.calculate(expression));
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
             }
+            do {
+                System.out.println("\nРҐРѕС‚РёС‚Рµ РїСЂРѕРґРѕР»Р¶РёС‚СЊ РІС‹С‡РёСЃР»РµРЅРёСЏ? [yes/no]");
+                reply = scan.next();
+            }while (!"yes".equals(reply) && !"no".equals(reply));
+            scan.nextLine();
         } while (reply.equals("yes"));
     }
 }
