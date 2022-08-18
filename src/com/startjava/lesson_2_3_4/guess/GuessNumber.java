@@ -17,6 +17,8 @@ public class GuessNumber {
         int targetNumber = (int)(Math.random() * 100) + 1;
         int playerAnswer = 0;
         Scanner scan = new Scanner(System.in);
+        player1.clearNumbers();
+        player2.clearNumbers();
 
         while (player1.getAttempt() != 10 || player2.getAttempt() != 10) {
             System.out.println("\nОчередь" + " " + player1 + "\n");
